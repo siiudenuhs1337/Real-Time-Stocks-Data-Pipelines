@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="595dp"
-        android:layout_height="385dp"
+        android:layout_height="386dp"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
