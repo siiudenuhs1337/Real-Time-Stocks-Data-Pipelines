@@ -191,7 +191,7 @@ It is designed to closely resemble **production-grade data platforms** used in m
 **Prince Pastakiya**
 Data Engineer | Analytics Engineer
 
-* LinkedIn: [https://www.linkedin.com/in/prince-pastakiya/]
+* LinkedIn: [https://www.linkedin.com/in/prince-pastakiya/](https://www.linkedin.com/in/prince-pastakiya/)
 * GitHub: [https://github.com/prince-pastakiya](https://github.com/prince-pastakiya)
 
 ---
