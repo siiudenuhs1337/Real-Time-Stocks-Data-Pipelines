@@ -24,6 +24,8 @@ API → Kafka Producer → Kafka Topic → Kafka Consumer → MinIO (Raw/Bronze)
 
 This architecture closely mirrors how modern data platforms handle **near real-time analytics at scale**.
 
+![Architecture](assets/architecture.jpeg)
+
 ---
 
 ## ⚡ Tech Stack
