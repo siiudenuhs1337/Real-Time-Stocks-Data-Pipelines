@@ -14,6 +14,8 @@ Live stock prices are fetched from an external API, streamed in real time throug
 
 The goal of this project is to demonstrate **real-world data engineering skills**, including streaming ingestion, layered data modeling (Bronze/Silver/Gold), orchestration, and business-focused analytics.
 
+![Project Overview](assets/project-overview.png)
+
 ---
 
 ## 🏗️ Architecture
